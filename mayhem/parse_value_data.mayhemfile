@@ -1,0 +1,7 @@
+project: rsass
+target: parse-value-data
+
+cmds:
+  - cmd: /parse_value_data
+  - cmd: /parse_value_data_no_inst @@
+    libfuzzer: false
