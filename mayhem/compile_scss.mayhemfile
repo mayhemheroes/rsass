@@ -1,0 +1,7 @@
+project: rsass
+target: compile-scss
+
+cmds:
+  - cmd: /compile_scss
+  - cmd: /compile_scss_no_inst @@
+    libfuzzer: false
