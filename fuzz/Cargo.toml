@@ -1,0 +1,33 @@
+[package]
+name = "rsass-fuzz"
+version = "0.0.0"
+publish = false
+edition = "2021"
+
+[package.metadata]
+cargo-fuzz = true
+
+[dependencies]
+libfuzzer-sys = "0.4"
+
+[dependencies.rsass]
+path = ".."
+
+# Prevent this from interfering with workspaces
+[workspace]
+members = ["."]
+
+[profile.release]
+debug = 1
+
+[[bin]]
+name = "parse_value_data"
+path = "fuzz_targets/parse_value_data.rs"
+test = false
+doc = false
+
+[[bin]]
+name = "compile_scss"
+path = "fuzz_targets/compile_scss.rs"
+test = false
+doc = false
