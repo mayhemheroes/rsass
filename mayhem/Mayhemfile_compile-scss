@@ -1,0 +1,11 @@
+project: rsass
+# Ported from the fork's old mayhem/compile_scss.mayhemfile (target `compile-scss`).
+# The old file also ran a non-instrumented duplicate binary; the single instrumented
+# libfuzzer-sys harness (mayhem/fuzz/fuzz_targets/compile_scss.rs) replaces both.
+target: compile-scss
+
+cmds:
+  # libFuzzer target: Mayhem drives inputs through the libFuzzer entrypoint, so NO '@@'
+  # (Mayhem rejects '@@' on a libfuzzer:true target).
+  - cmd: /mayhem/compile_scss
+    libfuzzer: true

@@ -1,0 +1,11 @@
+project: rsass
+# Ported from the fork's old mayhem/parse_value_data.mayhemfile (target `parse-value-data`).
+# The old file also ran a non-instrumented duplicate binary; the single instrumented
+# libfuzzer-sys harness (mayhem/fuzz/fuzz_targets/parse_value_data.rs) replaces both.
+target: parse-value-data
+
+cmds:
+  # libFuzzer target: Mayhem drives inputs through the libFuzzer entrypoint, so NO '@@'
+  # (Mayhem rejects '@@' on a libfuzzer:true target).
+  - cmd: /mayhem/parse_value_data
+    libfuzzer: true
